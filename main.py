@@ -3,6 +3,8 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from circleshape import CircleShape
+import sys
 
 def main():
 
@@ -30,6 +32,10 @@ def main():
             
         for item in updatable:
             item.update(dt)
+            for asteroid in asteroids:
+                if player.collision_check(asteroid):
+                    print("Game Over")
+                    sys.exit()
 
         screen.fill(000000)
         
